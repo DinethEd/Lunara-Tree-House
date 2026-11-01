@@ -460,8 +460,8 @@ document.addEventListener('DOMContentLoaded', () => {
               Your reservation request for <strong>${pkgName}</strong> has been received by our private concierge. We will contact you at <strong>${email}</strong> within 4 hours with your bespoke itinerary.
             </p>
             <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-              <a href="https://wa.me/94770000000?text=Hello%20Lunara%20Tree%20House%20Resort,%20I%20would%20like%20to%20inquire%20about%20my%20reservation%20for%20${encodeURIComponent(pkgName)}" target="_blank" class="btn btn-terracotta">
-                Direct WhatsApp Concierge
+              <a href="https://wa.me/94778533322?text=Hello%20Lunara%20Tree%20House%20Resort,%20I%20would%20like%20to%20inquire%20about%20my%20reservation%20for%20${encodeURIComponent(pkgName)}" target="_blank" class="btn btn-terracotta">
+                Direct WhatsApp Concierge (+94 778533322)
               </a>
               <button class="btn btn-outline-dark close-booking-modal" onclick="document.getElementById('bookingModal').classList.remove('open');">
                 Return to Sanctuary
@@ -517,4 +517,68 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     revealElements.forEach(el => el.classList.add('is-revealed'));
   }
+
+  // ------------------------------------------------------------------------
+  // 10. Interactive Hero Scene Switcher
+  // ------------------------------------------------------------------------
+  const heroMainImg = document.getElementById('heroMainImg');
+  const heroSceneBtns = document.querySelectorAll('.hero-scene-btn');
+  if (heroMainImg && heroSceneBtns.length) {
+    heroSceneBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        heroSceneBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const imgSrc = btn.dataset.heroImg;
+        if (!imgSrc) return;
+        heroMainImg.style.transition = 'opacity 0.4s ease';
+        heroMainImg.style.opacity = '0.35';
+        setTimeout(() => {
+          heroMainImg.src = imgSrc;
+          heroMainImg.onload = () => {
+            heroMainImg.style.opacity = '1';
+          };
+        }, 120);
+      });
+    });
+  }
+
+  // ------------------------------------------------------------------------
+  // 11. Live Interactive Google Map Controller
+  // ------------------------------------------------------------------------
+  const mapIframe = document.getElementById('interactiveMapIframe');
+  const mapToggleBtns = document.querySelectorAll('.map-toggle-btn');
+  const mapDestBtns = document.querySelectorAll('.map-dest-btn');
+
+  let currentMapQuery = 'Weerawila+Lake,+Hambantota,+Sri+Lanka';
+  let currentMapMode = 'm'; // m = terrain/standard, k = satellite
+  let currentMapZoom = '13';
+
+  function updateInteractiveMap() {
+    if (!mapIframe) return;
+    const newSrc = `https://maps.google.com/maps?q=${currentMapQuery}&t=${currentMapMode}&z=${currentMapZoom}&ie=UTF8&iwloc=&output=embed`;
+    mapIframe.src = newSrc;
+  }
+
+  // Map Mode Toggle (Terrain vs Satellite)
+  mapToggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      mapToggleBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentMapMode = btn.dataset.mapMode || 'm';
+      updateInteractiveMap();
+    });
+  });
+
+  // Destination Buttons
+  mapDestBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      mapDestBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentMapQuery = btn.dataset.destQuery || 'Weerawila+Lake,+Hambantota,+Sri+Lanka';
+      currentMapZoom = btn.dataset.zoom || '13';
+      updateInteractiveMap();
+    });
+  });
+
 });
+

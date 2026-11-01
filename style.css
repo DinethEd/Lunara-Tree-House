@@ -8,34 +8,45 @@
    -------------------------------------------------------------------------- */
 :root {
   /* Warm Earthy & European Editorial Palette */
-  --bg-primary: #FAF7F2;          /* Warm cream / off-white */
-  --bg-secondary: #F2EBE1;        /* Soft linen / warm beige */
-  --bg-tertiary: #E8DFD3;         /* Muted sand tone */
+  --bg-primary: #FAF7F2;
+  /* Warm cream / off-white */
+  --bg-secondary: #F2EBE1;
+  /* Soft linen / warm beige */
+  --bg-tertiary: #E8DFD3;
+  /* Muted sand tone */
   --bg-card: #FFFFFF;
   --bg-card-warm: #FAF6F0;
-  
+
   /* Rich Deep Forest Charcoal / Twilight Olive (from Casa Momo --token-a0f3f7f0) */
-  --bg-dark: #0E1201;             /* Casa Momo deep dark olive charcoal */
+  --bg-dark: #0E1201;
+  /* Casa Momo deep dark olive charcoal */
   --bg-dark-elevated: #161D04;
   --bg-dark-surface: #1E250A;
   --bg-dark-glass: rgba(14, 18, 1, 0.82);
 
   /* Warm Earthy & Terracotta Accents */
-  --accent-terracotta: #BC6F45;   /* Signature Casa Momo terracotta */
+  --accent-terracotta: #BC6F45;
+  /* Signature Casa Momo terracotta */
   --accent-terracotta-soft: rgba(188, 111, 69, 0.12);
   --accent-terracotta-hover: #9E5630;
-  --accent-gold: #C5A059;         /* Lunara moon & golden stag */
+  --accent-gold: #C5A059;
+  /* Lunara moon & golden stag */
   --accent-gold-soft: rgba(197, 160, 89, 0.15);
-  --accent-sage: #3F523A;         /* Wild Sri Lankan canopy green */
+  --accent-sage: #3F523A;
+  /* Wild Sri Lankan canopy green */
   --accent-sage-soft: rgba(63, 82, 58, 0.12);
 
   /* Typography Colors */
-  --text-dark: #12160F;           /* High contrast warm charcoal */
-  --text-body: #4A4D45;           /* Soft reading charcoal */
-  --text-muted: #7E7C74;          /* Editorial secondary caption */
+  --text-dark: #12160F;
+  /* High contrast warm charcoal */
+  --text-body: #4A4D45;
+  /* Soft reading charcoal */
+  --text-muted: #7E7C74;
+  /* Editorial secondary caption */
   --text-subtle: #A3A096;
-  
-  --text-light: #FFF0CA;          /* Warm butter cream text for dark sections */
+
+  --text-light: #FFF0CA;
+  /* Warm butter cream text for dark sections */
   --text-light-pure: #FAF7F2;
   --text-light-body: #D4CEBF;
   --text-light-muted: #9E9A8E;
@@ -81,7 +92,9 @@
 /* --------------------------------------------------------------------------
    2. Reset & Base Typography
    -------------------------------------------------------------------------- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -110,7 +123,11 @@ body {
   color: #FFF0CA;
 }
 
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
   height: auto;
@@ -122,7 +139,10 @@ a {
   transition: color var(--transition-fast);
 }
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font: inherit;
   color: inherit;
 }
@@ -133,7 +153,8 @@ button {
   background: none;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
@@ -680,8 +701,13 @@ ul, ol {
 }
 
 @keyframes subtleZoom {
-  0% { transform: scale(1.02); }
-  100% { transform: scale(1.08); }
+  0% {
+    transform: scale(1.02);
+  }
+
+  100% {
+    transform: scale(1.08);
+  }
 }
 
 .hero-overlay {
@@ -690,13 +716,11 @@ ul, ol {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    180deg,
-    rgba(14, 18, 1, 0.45) 0%,
-    rgba(14, 18, 1, 0.2) 40%,
-    rgba(14, 18, 1, 0.75) 85%,
-    rgba(14, 18, 1, 0.95) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(14, 18, 1, 0.45) 0%,
+      rgba(14, 18, 1, 0.2) 40%,
+      rgba(14, 18, 1, 0.75) 85%,
+      rgba(14, 18, 1, 0.95) 100%);
   z-index: 2;
 }
 
@@ -1409,7 +1433,7 @@ ul, ol {
   direction: rtl;
 }
 
-.experience-editorial-grid.reversed > * {
+.experience-editorial-grid.reversed>* {
   direction: ltr;
 }
 
@@ -1672,8 +1696,13 @@ ul, ol {
   background-color: var(--accent-terracotta);
 }
 
-.lightbox-prev { left: 30px; }
-.lightbox-next { right: 30px; }
+.lightbox-prev {
+  left: 30px;
+}
+
+.lightbox-next {
+  right: 30px;
+}
 
 /* --------------------------------------------------------------------------
    13. About / Architectural Story & Nature
@@ -1907,77 +1936,135 @@ ul, ol {
   font-weight: 600;
 }
 
-/* Stylized Visual Map Card */
+/* Live Interactive Map Card */
 .map-visual-card {
   position: relative;
   border-radius: var(--radius-card);
   overflow: hidden;
   box-shadow: var(--shadow-card);
-  aspect-ratio: 4/3;
+  height: 520px;
+  min-height: 480px;
   border: 1px solid var(--border-subtle);
+  background-color: var(--bg-card);
+  display: flex;
+  flex-direction: column;
 }
 
-.map-visual-card img {
+.map-interactive-container {
+  position: relative;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  flex-grow: 1;
 }
 
-.map-floating-overlay {
+.map-interactive-iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.map-top-bar {
   position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 65% 45%, rgba(14, 18, 1, 0.2) 0%, rgba(14, 18, 1, 0.75) 100%);
+  top: 16px;
+  left: 16px;
+  right: 16px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: space-between;
-  padding: 32px;
-  color: #FFF0CA;
+  gap: 10px;
+  z-index: 10;
+  flex-wrap: wrap;
+  pointer-events: none;
 }
 
-.map-pin-pulse {
-  position: absolute;
-  top: 50%;
-  left: 60%;
-  transform: translate(-50%, -50%);
+.map-top-bar > * {
+  pointer-events: auto;
+}
+
+.map-pill-badge {
+  background-color: rgba(14, 18, 1, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #FFF0CA;
+  border: 1px solid rgba(255, 240, 202, 0.2);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.map-toggle-group {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  background-color: rgba(14, 18, 1, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 240, 202, 0.2);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+}
+
+.map-toggle-btn {
+  padding: 4px 12px;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #FFF0CA;
+  border-radius: var(--radius-pill);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.map-toggle-btn.active {
+  background-color: var(--accent-gold);
+  color: var(--bg-dark);
+  font-weight: 700;
+}
+
+.map-destinations-bar {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
   align-items: center;
   gap: 8px;
+  z-index: 10;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  pointer-events: none;
 }
 
-.pulse-ring {
-  width: 24px;
-  height: 24px;
-  background-color: var(--accent-gold);
-  border-radius: 50%;
-  position: relative;
-  box-shadow: 0 0 20px var(--accent-gold);
+.map-destinations-bar > * {
+  pointer-events: auto;
 }
 
-.pulse-ring::before {
-  content: '';
-  position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  border: 2px solid var(--accent-gold);
-  animation: pulse 2s infinite ease-out;
-}
-
-@keyframes pulse {
-  0% { transform: scale(0.8); opacity: 1; }
-  100% { transform: scale(2.2); opacity: 0; }
-}
-
-.map-pin-label {
-  background-color: var(--bg-dark);
-  border: 1px solid var(--accent-gold);
-  color: #FFF0CA;
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: var(--radius-pill);
+.map-dest-btn {
   white-space: nowrap;
+  background-color: rgba(14, 18, 1, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #FFF0CA;
+  border: 1px solid rgba(255, 240, 202, 0.2);
+  border-radius: var(--radius-pill);
+  padding: 6px 12px;
+  font-size: 0.72rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+}
+
+.map-dest-btn:hover, .map-dest-btn.active {
+  background-color: var(--accent-terracotta);
+  border-color: var(--accent-terracotta);
+  color: #FFF;
 }
 
 /* --------------------------------------------------------------------------
@@ -2063,7 +2150,9 @@ ul, ol {
   margin-bottom: 6px;
 }
 
-.form-input, .form-select, .form-textarea {
+.form-input,
+.form-select,
+.form-textarea {
   width: 100%;
   padding: 12px 16px;
   background-color: #FFF;
@@ -2074,7 +2163,9 @@ ul, ol {
   transition: border-color var(--transition-fast);
 }
 
-.form-input:focus, .form-select:focus, .form-textarea:focus {
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
   outline: none;
   border-color: var(--accent-terracotta);
   box-shadow: 0 0 0 3px var(--accent-terracotta-soft);
@@ -2201,6 +2292,42 @@ ul, ol {
   font-size: 1.1rem;
   color: #FFF0CA;
   margin-top: 2px;
+}
+
+/* Footer Social Links (Direct official accounts) */
+.footer-social-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.social-pill-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(255, 240, 202, 0.08);
+  border: 1px solid rgba(255, 240, 202, 0.18);
+  border-radius: var(--radius-pill);
+  padding: 6px 14px;
+  color: #FFF0CA;
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.social-pill-link svg {
+  flex-shrink: 0;
+}
+
+.social-pill-link:hover {
+  background-color: var(--accent-gold);
+  border-color: var(--accent-gold);
+  color: var(--bg-dark);
+  transform: translateY(-2px);
 }
 
 .newsletter-form {
